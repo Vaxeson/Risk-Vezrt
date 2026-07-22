@@ -1,0 +1,50 @@
+{
+  "categories": [
+    { "id": "portrait", "label": "📸 بورتريه", "desc": "صور شخصية احترافية" },
+    { "id": "nature", "label": "🌿 طبيعة", "desc": "مناظر طبيعية خلابة" },
+    { "id": "futuristic", "label": "🚀 مستقبلي", "desc": "خيال علمي وتكنولوجيا" },
+    { "id": "cinematic", "label": "🎬 سينمائي", "desc": "إطار سينمائي درامي" },
+    { "id": "fantasy", "label": "🧙 خيالي", "desc": "أساطير وسحر ووحوش" },
+    { "id": "abstract", "label": "🎨 تجريدي", "desc": "فن حديث وأشكال هندسية" }
+  ],
+  
+  "templates": {
+    "portrait": "cinematic portrait of [subject], [details], [mood] lighting, [colors] color palette, professional photography, shallow depth of field, sharp focus, [resolution], award-winning photography",
+    "nature": "breathtaking landscape photography of [subject], [details], [mood] atmosphere, [colors] tones, golden hour lighting, ultra realistic, national geographic style, [resolution], 8k, highly detailed",
+    "futuristic": "cyberpunk [subject], [details], neon lights, futuristic cityscape, [mood] vibe, [colors] glowing accents, synthwave aesthetic, highly detailed, volumetric lighting, [resolution], octane render",
+    "cinematic": "cinematic wide shot of [subject], [details], dramatic [mood] lighting, [colors] color grading, film grain, epic composition, movie poster style, [resolution], imax",
+    "fantasy": "epic fantasy illustration of [subject], [details], magical [mood] atmosphere, [colors] palette, intricate details, digital painting, artstation style, [resolution], concept art",
+    "abstract": "abstract geometric art, [subject], [details], [mood] energy, vibrant [colors] colors, modern minimalist, digital art, [resolution], surreal composition"
+  },
+  
+  "options": {
+    "moods": [
+      { "value": "dramatic", "label": "درامي" },
+      { "value": "soft", "label": "ناعم" },
+      { "value": "mysterious", "label": "غامض" },
+      { "value": "happy", "label": "سعيد" },
+      { "value": "dark", "label": "كئيب" },
+      { "value": "ethereal", "label": "أثيري" }
+    ],
+    "colors": [
+      { "value": "warm", "label": "دافئة (أحمر/برتقالي)" },
+      { "value": "cool", "label": "باردة (أزرق/بنفسجي)" },
+      { "value": "neon", "label": "نيون" },
+      { "value": "monochrome", "label": "أحادي اللون" },
+      { "value": "natural", "label": "طبيعي" },
+      { "value": "vibrant", "label": "زاهي" }
+    ],
+    "resolutions": [
+      { "value": "8K", "label": "8K - فائق الجودة" },
+      { "value": "4K", "label": "4K - عالي جداً" },
+      { "value": "HD", "label": "HD - عالي" },
+      { "value": "2K", "label": "2K - متوسط" }
+    ],
+    "aspect_ratios": [
+      { "value": "16:9", "label": "16:9 (عريض)" },
+      { "value": "1:1", "label": "1:1 (مربع)" },
+      { "value": "3:2", "label": "3:2 (كلاسيكي)" },
+      { "value": "9:16", "label": "9:16 (عمودي)" }
+    ]
+  }
+}

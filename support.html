@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>الدعم ولوحة الشرف – Risk Vezrt</title>
+    <meta name="description" content="ادعم مشروع Risk Vezrt وانضم إلى لوحة الشرف. كل داعم له مكانه في قائمة المميزين." />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<!-- زر العودة إلى الصفحة الرئيسية -->
+<a href="index.html" class="back-btn">
+    ← العودة إلى الرئيسية
+</a>
+    <style>
+        /* ================================================================
+                   ROOT & THEMES (مستوحى من التطبيق الأصلي)
+                   ================================================================ */
+        :root {
+            --bg-void: #0b0e14;
+            --bg-panel: #12161f;
+            --bg-panel-2: #191f2c;
+            --bg-panel-3: #1f2632;
+            --border-soft: #232a3a;
+            --border-strong: #313b4f;
+            --text-primary: #e7ebf3;
+            --text-muted: #8a93a8;
+            --text-faint: #5b6478;
+            --accent-cyan: #4fd1c5;
+            --accent-cyan-dim: #2a9d93;
+            --accent-amber: #f5a623;
+            --accent-gold: #f5c542;
+            --accent-danger: #f2545b;
+            --accent-violet: #8f8fe8;
+            --shadow-panel: 0 20px 60px -20px rgba(0, 0, 0, 0.7);
+            --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+            --font-body: "Inter", "Segoe UI", sans-serif;
+            --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-med: 260ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-void: #f2f5f9;
+            --bg-panel: #ffffff;
+            --bg-panel-2: #f0f3f8;
+            --bg-panel-3: #e4e9f0;
+            --border-soft: #d0d8e3;
+            --border-strong: #b0bac9;
+            --text-primary: #1a1f2b;
+            --text-muted: #4f5a6b;
+            --text-faint: #7a8499;
+            --shadow-panel: 0 20px 60px -20px rgba(0, 0, 0, 0.12);
+            --accent-gold: #d4a017;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+        body {
+            background: var(--bg-void);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 15px;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 24px;
+            transition: background var(--transition-med), color var(--transition-med);
+            background-image: radial-gradient(circle at 15% 0%, rgba(79, 209, 197, 0.04), transparent 50%),
+                radial-gradient(circle at 85% 100%, rgba(245, 166, 35, 0.03), transparent 40%);
+            background-attachment: fixed;
+        }
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-display);
+            letter-spacing: -0.01em;
+            margin: 0 0 0.25em;
+        }
+        a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+        a:hover {
+            color: var(--accent-cyan-dim);
+        }
+        .visually-hidden {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+
+        /* ================================================================
+                   SCROLLBAR
+                   ================================================================ */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-strong) transparent;
+        }
+        *::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        *::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        *::-webkit-scrollbar-thumb {
+            background: var(--border-strong);
+            border-radius: 10px;
+        }
+        *::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-cyan-dim);
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent-cyan);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* ================================================================
+                   CONTAINER
+                   ================================================================ */
+        .app-container {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* ================================================================
+                   HEADER
+                   ================================================================ */
+        .page-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 16px 0 32px;
+            border-bottom: 1px solid var(--border-soft);
+            margin-bottom: 40px;
+        }
+        .page-header__brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .page-header__brand strong {
+            color: var(--accent-cyan);
+        }
+        .page-header__brand .badge {
+            background: var(--accent-cyan);
+            color: var(--bg-void);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .page-header__actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .theme-toggle {
+            background: var(--bg-panel-2);
+            border: 1px solid var(--border-soft);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: background var(--transition-fast), border-color var(--transition-fast);
+        }
+        .theme-toggle:hover {
+            background: var(--bg-panel-3);
+            border-color: var(--border-strong);
+        }
+
+        /* ================================================================
+                   SUPPORT CARD (CTA)
+                   ================================================================ */
+        .support-cta {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            margin-bottom: 48px;
+            box-shadow: var(--shadow-panel);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            transition: background var(--transition-med), border-color var(--transition-med);
+        }
+        .support-cta__content {
+            flex: 1 1 280px;
+        }
+        .support-cta__content h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .support-cta__content p {
+            color: var(--text-muted);
+            max-width: 480px;
+            font-size: 15px;
+        }
+        .support-cta__button {
+            flex-shrink: 0;
+        }
+        .btn-donate {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(155deg, var(--accent-cyan), var(--accent-cyan-dim));
+            color: var(--bg-void);
+            font-weight: 700;
+            font-size: 18px;
+            padding: 14px 32px;
+            border-radius: 60px;
+            border: none;
+            cursor: pointer;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+            box-shadow: 0 8px 24px -8px rgba(79, 209, 197, 0.35);
+            text-decoration: none;
+            font-family: var(--font-body);
+        }
+        .btn-donate:hover {
+            transform: scale(1.03);
+            filter: brightness(1.06);
+            box-shadow: 0 12px 32px -8px rgba(79, 209, 197, 0.5);
+        }
+        .btn-donate:active {
+            transform: scale(0.97);
+        }
+        .btn-donate .icon {
+            font-size: 24px;
+        }
+
+        /* ================================================================
+                   WALL OF FAME
+                   ================================================================ */
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title .badge-count {
+            background: var(--bg-panel-3);
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 2px 14px;
+            border-radius: 30px;
+            border: 1px solid var(--border-soft);
+            font-family: var(--font-mono);
+        }
+        .section-desc {
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-size: 15px;
+        }
+
+        .tier-section {
+            margin-bottom: 40px;
+        }
+        .tier-section__header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-soft);
+        }
+        .tier-section__header .tier-icon {
+            font-size: 28px;
+        }
+        .tier-section__header h3 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .tier-section__header .tier-badge {
+            background: var(--bg-panel-3);
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            border: 1px solid var(--border-soft);
+            font-family: var(--font-mono);
+        }
+
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        /* ===== Supporter Card ===== */
+        .supporter-card {
+            background: var(--bg-panel-2);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-md);
+            padding: 20px 18px;
+            transition: transform var(--transition-fast), border-color var(--transition-fast),
+                box-shadow var(--transition-fast), background var(--transition-med);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .supporter-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 12px 32px -12px rgba(79, 209, 197, 0.2);
+        }
+        .supporter-card.gold {
+            border-color: var(--accent-gold);
+            background: linear-gradient(145deg, var(--bg-panel-2), rgba(245, 197, 66, 0.06));
+        }
+        .supporter-card.gold:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 12px 32px -12px rgba(245, 197, 66, 0.25);
+        }
+        .supporter-card__name {
+            font-size: 17px;
+            font-weight: 700;
+            font-family: var(--font-display);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .supporter-card__name .tier-tag {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            background: var(--bg-panel-3);
+            padding: 2px 10px;
+            border-radius: 20px;
+            color: var(--text-muted);
+            border: 1px solid var(--border-soft);
+        }
+        .supporter-card.gold .tier-tag {
+            background: rgba(245, 197, 66, 0.15);
+            color: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+        .supporter-card__message {
+            color: var(--text-muted);
+            font-size: 13.5px;
+            line-height: 1.5;
+            padding: 8px 0 4px;
+            border-top: 1px solid var(--border-soft);
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .supporter-card__message::before {
+            content: "“";
+            color: var(--accent-cyan);
+            opacity: 0.5;
+        }
+        .supporter-card__message::after {
+            content: "”";
+            color: var(--accent-cyan);
+            opacity: 0.5;
+        }
+        .supporter-card__meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-faint);
+            font-family: var(--font-mono);
+            margin-top: 4px;
+        }
+        .supporter-card__meta .amount {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+        .supporter-card.gold .amount {
+            color: var(--accent-gold);
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 48px 20px;
+            color: var(--text-muted);
+            background: var(--bg-panel-2);
+            border-radius: var(--radius-md);
+            border: 1px dashed var(--border-strong);
+        }
+        .empty-state .icon-big {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        /* ================================================================
+                   FOOTER
+                   ================================================================ */
+        .page-footer {
+            margin-top: 56px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-soft);
+            text-align: center;
+            color: var(--text-faint);
+            font-size: 13px;
+        }
+        .page-footer a {
+            color: var(--text-muted);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .page-footer a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* ================================================================
+                   RESPONSIVE
+                   ================================================================ */
+        @media (max-width: 680px) {
+            body {
+                padding: 14px;
+            }
+            .page-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+                padding-bottom: 20px;
+                margin-bottom: 28px;
+            }
+            .page-header__brand {
+                font-size: 18px;
+            }
+            .page-header__actions {
+                justify-content: flex-start;
+            }
+            .support-cta {
+                padding: 28px 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+            .support-cta__content p {
+                margin: 0 auto;
+            }
+            .btn-donate {
+                width: 100%;
+                justify-content: center;
+            }
+            .section-title {
+                font-size: 22px;
+                flex-wrap: wrap;
+            }
+            .supporters-grid {
+                grid-template-columns: 1fr;
+            }
+            .tier-section__header {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (min-width: 681px) and (max-width: 1024px) {
+            .supporters-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        /* ================================================================
+                   ANIMATIONS
+                   ================================================================ */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .supporter-card {
+            animation: fadeUp 0.5s ease both;
+        }
+        .supporter-card:nth-child(1) {
+            animation-delay: 0.04s;
+        }
+        .supporter-card:nth-child(2) {
+            animation-delay: 0.08s;
+        }
+        .supporter-card:nth-child(3) {
+            animation-delay: 0.12s;
+        }
+        .supporter-card:nth-child(4) {
+            animation-delay: 0.16s;
+        }
+        .supporter-card:nth-child(5) {
+            animation-delay: 0.20s;
+        }
+        .supporter-card:nth-child(6) {
+            animation-delay: 0.24s;
+        }
+        .supporter-card:nth-child(7) {
+            animation-delay: 0.28s;
+        }
+        .supporter-card:nth-child(8) {
+            animation-delay: 0.32s;
+        }
+
+        /* ================================================================
+                   TOAST
+                   ================================================================ */
+        .toast-stack {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 200;
+            max-width: calc(100vw - 40px);
+        }
+        .toast {
+            background: var(--bg-panel-3);
+            border: 1px solid var(--border-strong);
+            border-right: 3px solid var(--accent-cyan);
+            color: var(--text-primary);
+            padding: 12px 18px;
+            border-radius: var(--radius-sm);
+            font-size: 13.5px;
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: toastIn var(--transition-med) ease both;
+        }
+        .toast.is-leaving {
+            animation: toastOut var(--transition-med) ease both;
+        }
+        @keyframes toastIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        @keyframes toastOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+        }
+
+        /* ================================================================
+                   UTILITY
+                   ================================================================ */
+        .text-muted {
+            color: var(--text-muted);
+        }
+        .text-center {
+            text-align: center;
+        }
+        .mt-8 {
+            margin-top: 8px;
+        }
+        .mt-16 {
+            margin-top: 16px;
+        }
+        .mb-16 {
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="app-container">
+
+        <!-- ===== HEADER ===== -->
+        <header class="page-header">
+            <div class="page-header__brand">
+                ⌁ Risk<strong>Vezrt</strong>
+                <span class="badge">الدعم</span>
+            </div>
+            <div class="page-header__actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="تبديل الثيم">🌙</button>
+            </div>
+        </header>
+
+        <!-- ===== SUPPORT CTA ===== -->
+        <section class="support-cta">
+            <div class="support-cta__content">
+                <h2>☕ ادعم المشروع</h2>
+                <p>
+                    ساعدنا في تطوير Risk Vezrt واستمرار تقديم أدوات مجانية للمطورين والمصممين.
+                    كل دعم مهما كان صغيراً يُحدث فرقاً كبيراً.
+                </p>
+            </div>
+            <div class="support-cta__button">
+                <a href="https://paypal.me/AhmedAhmed6624" target="_blank" rel="noopener noreferrer" class="btn-donate" id="donateBtn">
+                    <span class="icon">❤️</span>
+                    ادعم الآن
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== WALL OF FAME ===== -->
+        <section>
+            <div class="section-title">
+                🏆 لوحة الشرف
+                <span class="badge-count" id="totalCount">0</span>
+            </div>
+            <p class="section-desc">
+                هؤلاء هم الداعمون الكرام الذين ساعدوا في استمرار هذا المشروع. شكراً لكل واحد فيكم! ❤️
+            </p>
+
+            <!-- Gold Supporters -->
+            <div class="tier-section" id="goldSection">
+                <div class="tier-section__header">
+                    <span class="tier-icon">⭐</span>
+                    <h3>الداعمون المميزون</h3>
+                    <span class="tier-badge" id="goldCount">0</span>
+                </div>
+                <div class="supporters-grid" id="goldGrid"></div>
+            </div>
+
+            <!-- Regular Supporters -->
+            <div class="tier-section" id="regularSection">
+                <div class="tier-section__header">
+                    <span class="tier-icon">🤝</span>
+                    <h3>أصدقاء المشروع</h3>
+                    <span class="tier-badge" id="regularCount">0</span>
+                </div>
+                <div class="supporters-grid" id="regularGrid"></div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="page-footer">
+            <p>
+                Risk Vezrt © 2026 — صنع بحب ❤️ — جميع الأدوات تعمل في متصفحك، ولا يتم رفع أي بيانات.
+                <br>
+                <a href="#" onclick="return false;">سياسة الخصوصية</a> —
+                <a href="#" onclick="return false;">شروط الاستخدام</a>
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- ===== JAVASCRIPT (كامل) ===== -->
+    <!-- ================================================================ -->
+    <script>
+        (function() {
+            "use strict";
+
+            // ================================================================
+            // 1. THEME TOGGLE
+            // ================================================================
+            function initTheme() {
+                const btn = document.getElementById("themeToggle");
+                const stored = localStorage.getItem("Risk Vezrt-theme") || "dark";
+                const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                let current = stored === "light" ? "light" : "dark";
+                if (!localStorage.getItem("Risk Vezrt-theme") && prefersDark) current = "dark";
+                applyTheme(current);
+
+                btn.addEventListener("click", () => {
+                    const next = document.documentElement.getAttribute("data-theme") === "dark" ?
+                        "light" : "dark";
+                    applyTheme(next);
+                });
+            }
+
+            function applyTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                localStorage.setItem("Risk Vezrt-theme", theme);
+                const icon = document.getElementById("themeToggle");
+                if (icon) icon.textContent = theme === "dark" ? "🌙" : "☀️";
+            }
+
+            // ================================================================
+            // 2. TOAST SYSTEM
+            // ================================================================
+            const toastStack = document.getElementById("toastStack");
+
+            function showToast(msg, isError) {
+                if (!toastStack) return;
+                const t = document.createElement("div");
+                t.className = "toast" + (isError ? " is-error" : "");
+                t.setAttribute("role", "status");
+                t.textContent = msg;
+                toastStack.appendChild(t);
+                const timer = setTimeout(() => {
+                    t.classList.add("is-leaving");
+                    setTimeout(() => t.remove(), 220);
+                }, 2800);
+                t.addEventListener("mouseenter", () => clearTimeout(timer));
+            }
+
+            // ================================================================
+            // 3. SUPPORTERS DATA (JSON)
+            // ================================================================
+            const supportersData = [{
+                id: 1,
+                name: "أحمد السيد",
+                tier: "gold",
+                amount: 50,
+                message: "مشروع رائع! استمر في التطوير، أنت مبدع.",
+                date: "2026-05-10"
+            }, {
+                id: 2,
+                name: "سارة محمد",
+                tier: "gold",
+                amount: 35,
+                message: "أدوات مفيدة جداً، ساعدتني في شغلي اليومي ❤️",
+                date: "2026-05-12"
+            }, {
+                id: 3,
+                name: "Khaled Al-Hassan",
+                tier: "gold",
+                amount: 40,
+                message: "Best toolset I've ever used! Keep going.",
+                date: "2026-05-14"
+            }, {
+                id: 4,
+                name: "منى إبراهيم",
+                tier: "gold",
+                amount: 25,
+                message: "سعيدة جداً بهذا المشروع، أنت قدوة.",
+                date: "2026-05-16"
+            }, {
+                id: 5,
+                name: "محمد الجابري",
+                tier: "regular",
+                amount: 10,
+                message: "شكراً على المجهود الرائع.",
+                date: "2026-05-18"
+            }, {
+                id: 6,
+                name: "Nadia Tarek",
+                tier: "regular",
+                amount: 15,
+                message: "I love the QR generator with logo!",
+                date: "2026-05-20"
+            }, {
+                id: 7,
+                name: "يوسف العتيبي",
+                tier: "regular",
+                amount: 8,
+                message: "أداة ضغط الصور ممتازة، وفرت علي وقت.",
+                date: "2026-05-22"
+            }, {
+                id: 8,
+                name: "Lina Khalil",
+                tier: "regular",
+                amount: 12,
+                message: "Keep up the great work!",
+                date: "2026-05-23"
+            }, {
+                id: 9,
+                name: "عمرو سامي",
+                tier: "regular",
+                amount: 5,
+                message: "مشروع مستقبلي بامتياز.",
+                date: "2026-05-25"
+            }, {
+                id: 10,
+                name: "Hala Nasser",
+                tier: "regular",
+                amount: 7,
+                message: "الله يوفقك، أدوات مهمة جداً.",
+                date: "2026-05-26"
+            }];
+
+            // ================================================================
+            // 4. RENDER SUPPORTERS
+            // ================================================================
+            function renderSupporters() {
+                const gold = supportersData.filter(s => s.tier === "gold");
+                const regular = supportersData.filter(s => s.tier === "regular");
+
+                const goldGrid = document.getElementById("goldGrid");
+                const regularGrid = document.getElementById("regularGrid");
+
+                const goldCount = document.getElementById("goldCount");
+                const regularCount = document.getElementById("regularCount");
+                const totalCount = document.getElementById("totalCount");
+
+                // Gold
+                goldGrid.innerHTML = "";
+                if (gold.length === 0) {
+                    goldGrid.innerHTML = `<div class="empty-state"><span class="icon-big">⭐</span>لا يوجد داعمون مميزون حتى الآن. كن أولهم!</div>`;
+                } else {
+                    gold.forEach(s => {
+                        goldGrid.appendChild(createCard(s, "gold"));
+                    });
+                }
+                goldCount.textContent = gold.length;
+
+                // Regular
+                regularGrid.innerHTML = "";
+                if (regular.length === 0) {
+                    regularGrid.innerHTML =
+                    `<div class="empty-state"><span class="icon-big">🤝</span>لا يوجد داعمون عاديون حتى الآن. انضم إليهم!</div>`;
+                } else {
+                    regular.forEach(s => {
+                        regularGrid.appendChild(createCard(s, "regular"));
+                    });
+                }
+                regularCount.textContent = regular.length;
+
+                totalCount.textContent = supportersData.length;
+            }
+
+            function createCard(supporter, tier) {
+                const card = document.createElement("div");
+                card.className = `supporter-card${tier === "gold" ? " gold" : ""}`;
+
+                const nameDiv = document.createElement("div");
+                nameDiv.className = "supporter-card__name";
+                nameDiv.innerHTML = `
+                    ${supporter.name}
+                    <span class="tier-tag">${tier === "gold" ? "⭐ مميز" : "🤝 صديق"}</span>
+                `;
+                card.appendChild(nameDiv);
+
+                if (supporter.message && supporter.message.trim().length > 0) {
+                    const msgDiv = document.createElement("div");
+                    msgDiv.className = "supporter-card__message";
+                    msgDiv.textContent = supporter.message;
+                    card.appendChild(msgDiv);
+                }
+
+                const metaDiv = document.createElement("div");
+                metaDiv.className = "supporter-card__meta";
+                metaDiv.innerHTML = `
+                    <span class="amount">$${supporter.amount}</span>
+                    <span>${supporter.date}</span>
+                `;
+                card.appendChild(metaDiv);
+
+                return card;
+            }
+
+            // ================================================================
+            // 5. DONATE BUTTON TRACKING
+            // ================================================================
+            function initDonateTracking() {
+                const btn = document.getElementById("donateBtn");
+                if (btn) {
+                    btn.addEventListener("click", function(e) {
+                        showToast("❤️ شكراً لدعمك! سيتم توجيهك إلى PayPal.");
+                        // يمكنك إضافة Google Analytics هنا لو أردت
+                        // gtag('event', 'donate_click', { 'tool': 'support' });
+                    });
+                }
+            }
+
+            // ================================================================
+            // 6. BOOT
+            // ================================================================
+            function init() {
+                initTheme();
+                renderSupporters();
+                initDonateTracking();
+                console.log("✅ صفحة الدعم ولوحة الشرف جاهزة. عدد الداعمين:", supportersData.length);
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", init);
+            } else {
+                init();
+            }
+
+        })();
+    </script>
+
+</body>
+</html>

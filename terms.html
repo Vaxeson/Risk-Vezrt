@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>شروط الاستخدام - Risk Vezrt</title>
+    <style>
+        /* ===== نفس ستايل التطبيق الرئيسي ===== */
+        :root {
+            --bg-void: #0b0e14;
+            --bg-panel: #12161f;
+            --bg-panel-2: #191f2c;
+            --bg-panel-3: #1f2632;
+            --border-soft: #232a3a;
+            --border-strong: #313b4f;
+            --text-primary: #e7ebf3;
+            --text-muted: #8a93a8;
+            --text-faint: #5b6478;
+            --accent-cyan: #4fd1c5;
+            --accent-cyan-dim: #2a9d93;
+            --accent-amber: #f5a623;
+            --accent-danger: #f2545b;
+            --shadow-panel: 0 20px 60px -20px rgba(0, 0, 0, 0.6);
+            --font-body: "Inter", "Segoe UI", sans-serif;
+            --font-mono: "JetBrains Mono", monospace;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --transition-med: 260ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-void: #f2f5f9;
+            --bg-panel: #ffffff;
+            --bg-panel-2: #f0f3f8;
+            --bg-panel-3: #e4e9f0;
+            --border-soft: #d0d8e3;
+            --border-strong: #b0bac9;
+            --text-primary: #1a1f2b;
+            --text-muted: #4f5a6b;
+            --text-faint: #7a8499;
+            --shadow-panel: 0 20px 60px -20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg-void);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.8;
+            padding: 30px 20px;
+            min-height: 100vh;
+            transition: background var(--transition-med), color var(--transition-med);
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-lg);
+            padding: 40px 44px;
+            box-shadow: var(--shadow-panel);
+            transition: background var(--transition-med), border-color var(--transition-med);
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: var(--accent-cyan);
+        }
+
+        .meta {
+            color: var(--text-faint);
+            font-size: 14px;
+            border-bottom: 1px solid var(--border-soft);
+            padding-bottom: 18px;
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .meta a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+        .meta a:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin: 32px 0 12px;
+            color: var(--text-primary);
+            border-right: 4px solid var(--accent-cyan);
+            padding-right: 14px;
+        }
+
+        h3 {
+            font-size: 17px;
+            margin: 24px 0 8px;
+            color: var(--text-primary);
+        }
+
+        p,
+        li {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-right: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .highlight-box {
+            background: var(--bg-panel-2);
+            border-right: 4px solid var(--accent-cyan);
+            padding: 16px 20px;
+            border-radius: var(--radius-md);
+            margin: 16px 0;
+        }
+
+        .highlight-box strong {
+            color: var(--text-primary);
+        }
+
+        .highlight-box.warning {
+            border-right-color: var(--accent-amber);
+        }
+
+        .highlight-box.danger {
+            border-right-color: var(--accent-danger);
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--bg-panel-3);
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--border-soft);
+        }
+
+        .badge.warning {
+            color: var(--accent-amber);
+            border-color: var(--accent-amber);
+        }
+
+        .badge.danger {
+            color: var(--accent-danger);
+            border-color: var(--accent-danger);
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th,
+        td {
+            padding: 10px 14px;
+            border: 1px solid var(--border-soft);
+            text-align: right;
+        }
+
+        th {
+            background: var(--bg-panel-2);
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        td {
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-soft);
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-panel-3);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-sm);
+            padding: 10px 20px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all var(--transition-med);
+            margin-bottom: 24px;
+        }
+
+        .btn-back:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .btn-back svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: var(--bg-panel-3);
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+            border: 1px solid var(--border-soft);
+        }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-soft);
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 100;
+            color: var(--text-primary);
+            transition: all var(--transition-med);
+            box-shadow: var(--shadow-panel);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-cyan);
+            transform: scale(1.05);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .container {
+                padding: 24px 18px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 17px;
+            }
+            .meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            table {
+                font-size: 12px;
+            }
+            th,
+            td {
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="تبديل الثيم">🌙</button>
+
+    <div class="container">
+
+        <!-- ===== زر العودة ===== -->
+        <a href="index.html" class="btn-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            العودة إلى التطبيق
+        </a>
+
+        <!-- ===== المحتوى ===== -->
+        <h1>📋 شروط الاستخدام</h1>
+
+        <div class="meta">
+            <span><strong>Risk Vezrt</strong> — <span class="version-badge">v1.0</span></span>
+            <span>📅 آخر تحديث: <strong>20 يوليو 2026</strong></span>
+        </div>
+
+        <p style="font-size:16px; color:var(--text-primary);">
+            مرحباً بك في <strong>Risk Vezrt</strong>. باستخدامك لهذا التطبيق، فإنك توافق على الالتزام بالشروط التالية.
+        </p>
+
+        <!-- ===== القسم 1 ===== -->
+        <h2>1. قبول الشروط</h2>
+        <p>
+            باستخدامك لـ Risk Vezrt، فإنك توافق على هذه الشروط. إذا كنت لا توافق على أي جزء من هذه الشروط، 
+            يرجى عدم استخدام التطبيق.
+        </p>
+
+        <!-- ===== القسم 2 ===== -->
+        <h2>2. وصف الخدمة</h2>
+        <p>
+            Risk Vezrt هو تطبيق ويب يقدم مجموعة من الأدوات المجانية:
+        </p>
+        <ul>
+            <li>✅ إنشاء ومسح رموز QR مع إمكانية إضافة شعار.</li>
+            <li>✅ ضغط الصور وتغيير حجمها.</li>
+            <li>✅ استخراج الألوان السائدة من الصور.</li>
+            <li>✅ تحويل النصوص والملفات إلى Base64.</li>
+            <li>✅ تنسيق وعرض JSON بشكل شجري.</li>
+            <li>✅ مولد كلمات مرور قوية.</li>
+            <li>✅ وأدوات أخرى كثيرة.</li>
+        </ul>
+        <div class="highlight-box">
+            <strong>⚠️ جميع الأدوات تعمل في متصفحك (Client-side)</strong>
+            <p style="margin-top:8px;margin-bottom:0;">
+                لا يتم رفع أي ملفات أو بيانات إلى خوادم خارجية. التطبيق يعتمد كلياً على قدرات متصفحك.
+            </p>
+        </div>
+
+        <!-- ===== القسم 3 ===== -->
+        <h2>3. استخدام التطبيق</h2>
+        <h3>3.1. الاستخدام المسموح به</h3>
+        <ul>
+            <li>✅ استخدام الأدوات لأي غرض شخصي أو تجاري.</li>
+            <li>✅ مشاركة التطبيق مع الآخرين.</li>
+            <li>✅ استخدام التطبيق دون تسجيل دخول.</li>
+        </ul>
+
+        <h3>3.2. الاستخدام غير المسموح به</h3>
+        <ul>
+            <li>❌ محاولة اختراق التطبيق أو تعطيله.</li>
+            <li>❌ استخدام التطبيق لنشر محتوى غير قانوني أو ضار.</li>
+            <li>❌ إعادة بيع أو توزيع التطبيق كمنتج خاص بك.</li>
+            <li>❌ استخدام التطبيق بطرق قد تضر بالآخرين.</li>
+        </ul>
+
+        <div class="highlight-box warning">
+            <strong>⚠️ انتهاك هذه الشروط قد يؤدي إلى حظر وصولك إلى التطبيق.</strong>
+        </div>
+
+        <!-- ===== القسم 4 ===== -->
+        <h2>4. الملكية الفكرية</h2>
+        <p>
+            جميع حقوق الملكية الفكرية المتعلقة بـ Risk Vezrt تعود للمطور (Vezrt Team).
+        </p>
+        <ul>
+            <li>✅ الكود المصدري متاح للاطلاع (مفتوح المصدر).</li>
+            <li>✅ يمكنك استخدام الكود لأغراض تعليمية.</li>
+            <li>❌ لا يجوز إعادة توزيع الكود كمنتج تجاري دون إذن.</li>
+        </ul>
+
+        <!-- ===== القسم 5 ===== -->
+        <h2>5. إخلاء المسؤولية</h2>
+        <div class="highlight-box danger">
+            <strong>⚠️ التطبيق يقدم "كما هو" (As-Is)</strong>
+            <p style="margin-top:8px;margin-bottom:0;">
+                نحن نبذل قصارى جهدنا لتقديم أدوات دقيقة وموثوقة، لكننا لا نضمن:
+            </p>
+        </div>
+        <ul>
+            <li>⚠️ خلو التطبيق من الأخطاء البرمجية.</li>
+            <li>⚠️ توافق جميع الأدوات مع جميع المتصفحات.</li>
+            <li>⚠️ دقة النتائج في جميع الحالات (مثل OCR، استخراج الألوان).</li>
+            <li>⚠️ استمرارية توفر التطبيق بدون انقطاع.</li>
+        </ul>
+        <p>
+            أنت تتحمل المسؤولية الكاملة عن استخدامك للأدوات والنتائج التي تحصل عليها.
+        </p>
+
+        <!-- ===== القسم 6 ===== -->
+        <h2>6. حدود المسؤولية</h2>
+        <p>
+            في حدود ما يسمح به القانون، لا نتحمل أي مسؤولية عن:
+        </p>
+        <ul>
+            <li>❌ أي خسائر مادية أو معنوية ناتجة عن استخدام التطبيق.</li>
+            <li>❌ أي بيانات مفقودة أو تالفة نتيجة استخدام التطبيق.</li>
+            <li>❌ أي أضرار غير مباشرة أو عرضية أو تبعية.</li>
+        </ul>
+
+        <!-- ===== القسم 7 ===== -->
+        <h2>7. الخصوصية</h2>
+        <p>
+            نهتم بخصوصيتك. يرجى قراءة <a href="privacy.html" style="color:var(--accent-cyan);">سياسة الخصوصية</a> 
+            لفهم كيفية تعاملنا مع بياناتك.
+        </p>
+        <div class="highlight-box">
+            <strong>🔒 مختصر سياسة الخصوصية:</strong>
+            <ul style="margin-top:8px;margin-bottom:0;">
+                <li>✅ لا نجمع أي بيانات شخصية.</li>
+                <li>✅ جميع الملفات تبقى على جهازك.</li>
+                <li>✅ لا نستخدم ملفات تعريف الارتباط (Cookies).</li>
+            </ul>
+        </div>
+
+        <!-- ===== القسم 8 ===== -->
+        <h2>8. روابط الطرف الثالث</h2>
+        <p>
+            قد يحتوي التطبيق على روابط لمواقع أو خدمات خارجية (مثل PayPal، Google Analytics).
+            نحن لسنا مسؤولين عن ممارسات الخصوصية أو محتوى هذه المواقع.
+        </p>
+
+        <!-- ===== القسم 9 ===== -->
+        <h2>9. التعديلات على الشروط</h2>
+        <p>
+            نحتفظ بالحق في تعديل هذه الشروط في أي وقت. سيتم عرض تاريخ آخر تحديث في أعلى الصفحة.
+            استمرارك في استخدام التطبيق بعد التعديلات يعني موافقتك على الشروط الجديدة.
+        </p>
+
+        <!-- ===== القسم 10 ===== -->
+        <h2>10. القانون المعمول به</h2>
+        <p>
+            تخضع هذه الشروط وتفسر وفقاً لقوانين الدولة التي يقع فيها المطور. 
+            في حالة أي نزاع، تسعى الأطراف إلى حله ودياً قبل اللجوء إلى القضاء.
+        </p>
+
+        <!-- ===== القسم 11 ===== -->
+        <h2>11. التواصل</h2>
+        <p>للاستفسارات أو الإبلاغ عن مشكلة، يمكنك التواصل عبر:</p>
+        <ul>
+            <li>📧 البريد الإلكتروني: <a href="mailto:your-email@example.com" style="color:var(--accent-cyan);">your-email@example.com</a></li>
+            <li>🐦 تويتر: <a href="#" style="color:var(--accent-cyan);">@yourhandle</a></li>
+            <li>🌐 الموقع: <a href="#" style="color:var(--accent-cyan);">your-website.com</a></li>
+        </ul>
+
+        <!-- ===== خاتمة ===== -->
+        <div class="highlight-box" style="border-right-color:var(--accent-cyan);">
+            <p style="margin:0;color:var(--text-primary);">
+                <strong>✅ باستخدامك لـ Risk Vezrt فإنك توافق على هذه الشروط بشكل كامل.</strong>
+            </p>
+        </div>
+
+        <!-- ===== روابط إضافية ===== -->
+        <div class="footer-links">
+            <a href="index.html">🏠 العودة إلى التطبيق</a>
+            <a href="privacy.html">🔒 سياسة الخصوصية</a>
+            <a href="support.html">❤️ دعم المشروع</a>
+        </div>
+
+        <p style="margin-top:30px;font-size:13px;color:var(--text-faint);text-align:center;">
+            &copy; 2026 Risk Vezrt — جميع الحقوق محفوظة.
+        </p>
+
+    </div>
+
+    <!-- ===== JavaScript ===== -->
+    <script>
+        (function() {
+            "use strict";
+
+            // ===== THEME TOGGLE =====
+            const toggleBtn = document.getElementById("themeToggle");
+
+            function applyTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                localStorage.setItem("Risk Vezrt-theme", theme);
+                toggleBtn.textContent = theme === "dark" ? "🌙" : "☀️";
+            }
+
+            function getTheme() {
+                const stored = localStorage.getItem("Risk Vesrt-theme") || "dark";
+                const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                if (!localStorage.getItem("Risk Vezrt-theme") && prefersDark) return "dark";
+                return stored === "light" ? "light" : "dark";
+            }
+
+            applyTheme(getTheme());
+
+            toggleBtn.addEventListener("click", () => {
+                const current = document.documentElement.getAttribute("data-theme") || "dark";
+                const next = current === "dark" ? "light" : "dark";
+                applyTheme(next);
+            });
+
+            // ===== SMOOTH SCROLL =====
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener("click", function(e) {
+                    const href = this.getAttribute("href");
+                    if (href && href.startsWith("#")) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) target.scrollIntoView({ behavior: "smooth" });
+                    }
+                });
+            });
+
+            console.log("✅ شروط الاستخدام محملة بنجاح!");
+        })();
+    </script>
+
+</body>
+</html>
