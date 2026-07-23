@@ -1411,6 +1411,36 @@
 
 /* في صفحة Support */
 .support-logo { height: 48px; width: auto; }
+
+/* ===== BETA BADGE ===== */
+.beta-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #f5a623, #f7c948);
+    padding: 4px 14px;
+    border-radius: 40px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #0b0e14;
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.6);
+    animation: betaGlow 2s ease-in-out infinite alternate;
+    letter-spacing: 0.5px;
+    margin-right: 6px;
+    vertical-align: middle;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+}
+
+/* ===== تأثير التوهج ===== */
+@keyframes betaGlow {
+    0% {
+        box-shadow: 0 0 10px rgba(245, 166, 35, 0.3);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(245, 166, 35, 0.9), 0 0 60px rgba(245, 166, 35, 0.3);
+        transform: scale(1.05);
+    }
+}
     </style>
 </head>
 <body>
@@ -1425,9 +1455,13 @@
     <img src="file_00000000d83481f48e5e7532232cada3.png" alt="Risk Vezrt" class="brand-logo" />
     <span class="brand-text">Risk<strong>Vezrt</strong></span>
 </div>
+<div class="beta-badge">
+    <span class="beta-text">Beta</span>
+</div>
         <button class="theme-toggle" id="themeToggleMobile" aria-label="تبديل الثيم">🌙</button>
         <div class="mobile-bar__led" aria-hidden="true">
-            
+            <!-- ===== BETA BADGE ===== -->
+
         </div>
         
     </header>
